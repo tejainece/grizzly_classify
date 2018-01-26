@@ -1,0 +1,15 @@
+name: grizzly_classify
+description: A starting point for Dart libraries or applications.
+version: 0.0.1
+#homepage: https://www.example.com
+#author: teja <email@example.com>
+
+environment:
+  sdk: '>=1.20.1 <2.0.0'
+
+dependencies:
+  grizzly_series: ^0.0.22-dev
+  grizzly_linalg: ^0.0.2-dev
+
+dev_dependencies:
+  test: ^0.12.0
