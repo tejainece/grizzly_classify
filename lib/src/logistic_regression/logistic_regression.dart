@@ -32,10 +32,10 @@ class LogisticRegressionProblem extends RegressionProblem {
         ret += c[i] * (-yz + math.log(1 + math.exp(yz)));
     }
 
-    return (ret);
+    return ret;
   }
 
-  /// Computes the gradient for with parameters [w]
+  /// Computes the gradient with parameters [w]
   Double1DFix gradient(Double1DView w) {
     final g = new Double1D(w);
     for (int i = 0; i < y.length; i++) {

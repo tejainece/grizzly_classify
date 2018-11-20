@@ -34,18 +34,37 @@ class TrustRegionNewtonSolver {
     // TODO
   }
 
+  void learn_(Double1DFix w, double eps, int maxIter) {
+    // TODO check that w's length is same as x's
+
+    // Calculate gradient norm at w=0 for stopping condition.
+    Double1DFix g = problem.gradient(new Double1DView.sized(w.length));
+    double gnorm0 = norm2(g);
+
+    double f = problem.costFunction(w);
+    g = problem.gradient(w);
+    double gnorm = norm2(g);
+
+    if(gnorm > eps * gnorm0) return;
+
+    for(int i = 0; i < maxIter; i++) {
+      // TODO
+    }
+
+    // TODO
+  }
+
   Double1DFix learn(int maxIter, double eps) {
     final w = new Double1DFix.sized(x.numCols); // The parameters to be found!
 
     final s = new Double1DFix.sized(x.numCols); // TODO what is this?
     final r = new Double1DFix.sized(x.numCols); // TODO what is this?
-    ;
 
     // Calculate gradient norm at w=0 for stopping condition.
     double f = problem.costFunction(w);
     Double1DFix g = problem.gradient(w);
     double delta = norm2(g);
-    final double gNorm0 = delta;
+    double gNorm0 = delta;
 
     final bool search = gNorm0 <= eps * gnorm1;
 
@@ -59,7 +78,7 @@ class TrustRegionNewtonSolver {
       final double gs = g.dot(s);
       final double prered = -0.5 * (gs - s.dot(r));
 
-      final double fnew = costFunction(wNew);
+      final double fnew = problem.costFunction(wNew);
 
       // Compute the actual reduction.
       final double actred = f - fnew;
@@ -91,7 +110,7 @@ class TrustRegionNewtonSolver {
         iter++;
         w.assign(wNew);
         f = fnew;
-        g.assign(grad(w));
+        g.assign(problem.gradient(w));
 
         gNorm0 = norm2(g);
         if (gNorm0 <= eps * gnorm1) break;
