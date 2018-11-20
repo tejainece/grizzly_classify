@@ -15,6 +15,7 @@ abstract class RegressionProblem {
   Double1DFix gradient(Double1DView w);
 }
 
+/*
 /// Solves a regress-able problem using Trust region newton method
 class TrustRegionNewtonSolver {
   /// The regress-able problem which needs to be solved
@@ -146,3 +147,4 @@ class TrustRegionNewtonSolver {
   static const double _sigma2 = 0.5;
   static const double _sigma3 = 4.0;
 }
+*/
